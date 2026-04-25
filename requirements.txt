@@ -12,3 +12,5 @@ torchvision
 matplotlib
 seaborn
 jupyter
+gunicorn
+whitenoise
