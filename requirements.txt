@@ -6,7 +6,6 @@ numpy
 pandas
 scikit-learn
 scipy
-tensorflow
 torch
 torchvision
 matplotlib
