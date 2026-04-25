@@ -9,7 +9,7 @@ import joblib
 import random
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(BASE_DIR, "data", "student_performance.csv")
+file_path = os.path.join(BASE_DIR, "student_performance.csv")
 
 data = pd.read_csv(file_path)
 df = pd.DataFrame(data)
@@ -38,14 +38,14 @@ y = data['total_score']
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
 
-model = RandomForestRegressor(n_estimators=100, random_state=42)
+model = RandomForestRegressor(n_estimators=5, max_depth=5, random_state=42)
 model.fit(X_train, y_train)  # read 10000 data
 
 
 re_score = model.score(X_test, y_test)  # the final grade R square
 y_pred = model.predict(X_test)
 print(
-    "Coefficients [daily_study_hours, sleep_hours, attendance_percentage]:")
+    "Coefficients [daily_study_hours, sleep_hours, attendance_percentage, screen_time]:")
 print(model.feature_importances_)
 print(f"Feature importance:: {re_score:.4f}")
 
@@ -74,6 +74,6 @@ result = pd.DataFrame({
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 'model' is your trained Ridge model, 'scaler' is your StandardScaler
-joblib.dump(model, os.path.join(BASE_DIR, 'student_model.pkl'))
+joblib.dump(model, os.path.join(BASE_DIR, 'student_model.pkl'), compress=3)
 
 print("Success!!")
