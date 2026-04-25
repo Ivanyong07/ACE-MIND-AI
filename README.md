@@ -26,6 +26,10 @@ git clone https://github.com/Ivanyong07/ACE-MIND-AI.git
 cd ACE-MIND-AI
 pip install -r requirements.txt
 
+# 🔑 Genrate A Secret Key
+
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+
 # 🤖 ML Model Setup
 
 Before running the server, train the model:
