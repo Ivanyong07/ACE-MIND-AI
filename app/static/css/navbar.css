@@ -1,0 +1,54 @@
+.pill-radio-container {
+    /* Your original variables */
+    --main-color: #9434f3;
+    --secondary-color: #7873f5;
+    --text-color: #ddd;
+    --pill-bg: #1a1a1a;
+    --item-width: 150px;
+
+    display: flex;
+    position: sticky;
+    background: var(--pill-bg);
+    border-radius: 3rem;
+    padding: 0.2rem;
+    z-index: 1000;
+    gap: 0;
+    box-shadow: 0 0 20px #000 inset;
+    width: fit-content;
+    margin: 20px auto;
+  }
+
+  .pill-radio-container input {
+    display: none;
+  }
+
+  .pill-radio-container label {
+    position: relative;
+    padding: 0.5rem 1.0rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color 0.3s ease-in-out;
+    z-index: 2;
+    /* Added fixed width so the sliding math works perfectly */
+    width: var(--item-width);
+    text-align: center;
+  }
+
+  /* Keep your original link styling but make it look like part of the label */
+  .pill-radio-container label a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pill-radio-container input:checked + label {
+    color: #fff;
+  }
+
+  .pill-radio-container label:hover {
+    color: var(--main-color);
+  }

@@ -1,0 +1,196 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACE MIND AI</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(
+          circle at center,
+          #1a0033 0%,
+          #0d001a 50%,
+          #000000 100%
+        );
+        overflow: hidden;
+      }
+
+      .login-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 50px;
+        border-radius: 30px;
+        box-shadow: 0 0 40px rgba(128, 0, 255, 0.3);
+        width: 350px;
+        text-align: center;
+        position: relative;
+      }
+
+      .logo {
+        font-size: 2.2em;
+        font-weight: bold;
+        letter-spacing: 10px;
+        color: #fff;
+        margin-bottom: 10px;
+        background: linear-gradient(to right, #fff, #b366ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .welcome {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 30px;
+        font-size: 1.2em;
+      }
+
+      .input-group {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .input-group label {
+        display: block;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8em;
+        margin-bottom: 5px;
+        margin-left: 5px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        outline: none;
+        box-sizing: border-box;
+      }
+
+      .input-group input:focus {
+        border-color: #8000ff;
+        box-shadow: 0 0 10px rgba(128, 0, 255, 0.5);
+      }
+
+      .forget-password {
+        color: #b366ff;
+        text-decoration: none;
+        font-size: 0.75em;
+        margin-top: 5px;
+        display: inline-block;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(to right, #8000ff, #b98bea);
+        border: none;
+        border-radius: 12px;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(128, 0, 255, 0.4);
+        transition: 0.3s;
+      }
+
+      .login-btn:hover {
+        background: #9d33ff;
+        transform: translateY(-2px);
+      }
+
+      .footer {
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer a {
+        color: #b366ff;
+        text-decoration: none;
+      }
+
+      .messages {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .messages ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .messages li {
+        background: rgba(255, 107, 107, 0.2);
+        border: 1px solid rgba(255, 107, 107, 0.5);
+        color: #ff6b6b;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="logo">ACE MIND AI</div>
+      <div class="welcome">Welcome to Ace Mind AI</div>
+
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <ul>
+          <li>{{ message }}</li>
+        </ul>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="your username"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••••••"
+            required
+          />
+          <a href="#" class="forget-password">Forget Password ?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+
+      <div class="footer">
+        Don't have any account? <a href="/register/">Sign UP</a>
+      </div>
+    </div>
+  </body>
+</html>

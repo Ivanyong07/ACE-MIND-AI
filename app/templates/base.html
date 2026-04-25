@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ace Mind AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=DM+Sans:wght@300;400;500&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ai_result.css' %}" />
+  </head>
+  <body>
+    <div id="bg-canvas"></div>
+
+    <header class="top-header">
+      <h1 class="title">Ace Mind AI</h1>
+      {% include 'navbar.html' %}
+    </header>
+
+    {% block hero %}
+    <div class="hero-container">
+      <div class="robot-wrapper">
+        <div class="ai-bot">
+          <div class="bot-antenna"></div>
+          <div class="ear-left bot-ear"></div>
+          <div class="ear-right bot-ear"></div>
+          <div class="bot-face">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+        </div>
+        <div class="bot-glow"></div>
+      </div>
+      <div class="logo-text">ACE MIND AI</div>
+      <div class="description">
+        Your personal AI Student Assistant. We generate optimized study
+        workflows, predict your academic performance, and provide instant expert
+        explanations for any topic.
+      </div>
+      <a href="{% url 'launch' %}">
+        <button class="cta-btn">Launch System</button>
+      </a>
+    </div>
+    {% endblock hero %} {% if messages %}
+    <div class="w-full max-w-2xl mx-auto mt-6 space-y-3">
+      {% for message in messages %}
+      <div
+        class="relative rounded-lg bg-red-600 text-white px-4 py-3 shadow-md"
+        role="alert"
+      >
+        <span class="block">{{ message }}</span>
+
+        <button
+          type="button"
+          class="absolute top-2 right-2 text-white/70 hover:text-white"
+          onclick="this.parentElement.remove()"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- This is block-level, always renders BELOW hero -->
+    <div style="display: block; width: 100%">
+      {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'js/base.js' %}"></script>
+  </body>
+</html>

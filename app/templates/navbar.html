@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+
+<div class="pill-radio-container">
+  {% if user.is_authenticated %}
+  <input name="plan" id="pill-logout" type="radio" />
+  <label for="pill-logout">
+    <a href="{% url 'logout' %}">Logout</a>
+  </label>
+
+  <input name="plan" id="pill-history" type="radio" />
+  <label for="pill-history">
+    <a href="#historyTable">History</a>
+  </label>
+
+  <input name="plan" id="pill-ai" type="radio" />
+  <label for="pill-ai">
+    <a href="#userPrompt">AI Generate</a>
+  </label>
+
+  {% else %}
+  <input name="plan" id="pill-login" type="radio" />
+  <label for="pill-login">
+    <a href="{% url 'login' %}">Log In</a>
+  </label>
+
+  <input name="plan" id="pill-register" type="radio" />
+  <label for="pill-register">
+    <a href="{% url 'register' %}">Register</a>
+  </label>
+  {% endif %}
+</div>
