@@ -8,7 +8,10 @@ import os
 import joblib
 import random
 
-data = pd.read_csv("https://link-to-dataset.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(BASE_DIR, "data", "student_performance.csv")
+
+data = pd.read_csv(file_path)
 df = pd.DataFrame(data)
 
 # Drop the useless data

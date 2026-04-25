@@ -1,0 +1,14 @@
+Django>=5.0,<6.0
+django-jazzmin
+python-dotenv
+djangorestframework
+numpy
+pandas
+scikit-learn
+scipy
+tensorflow
+torch
+torchvision
+matplotlib
+seaborn
+jupyter
