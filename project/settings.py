@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://ace-mind-ai.onrender.com"]
+ALLOWED_HOSTS = ["ace-mind-ai.onrender.com"]
 
 # Application definition
 
